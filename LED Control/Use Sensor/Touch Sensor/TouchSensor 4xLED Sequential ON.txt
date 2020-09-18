@@ -1,0 +1,61 @@
+/* Touch Sensor Sequential LED on */
+
+int touchSensor = 2;
+int led1 = 13;
+int led2 = 12;
+int led3 = 11;
+int led4 = 10;
+int count = 0;
+
+void setup() {
+  pinMode(touchSensor, INPUT);
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(led3, OUTPUT);
+  pinMode(led4, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+    int isTouch = digitalRead(touchSensor);
+
+    if(isTouch == 1) { //터치센서를 누르고 있을때
+        digitalWrite(led1, HIGH);
+        count++;
+        
+        Serial.print("터치중! (cnt = ");
+        Serial.print(count);
+        Serial.println(")");
+
+        if(count >= 80) //최대 count 값을 80으로 설정
+            count = 80;
+
+        if(count > 60)
+            digitalWrite(led4, HIGH);
+        else if(count > 40)
+            digitalWrite(led3, HIGH);
+        else if(count > 20)
+            digitalWrite(led2, HIGH);
+            
+    }
+    else { //터치센서를 누르고 있지 않을떄
+        count--;
+        
+        Serial.print("대기중 (cnt = ");
+        Serial.print(count);
+        Serial.println(")");
+
+        if(count <= 0) //최소 count 값을 0으로 설정
+            count = 0;
+
+        if(count <= 0)
+            digitalWrite(led1, LOW);
+        else if(count < 20)
+            digitalWrite(led2, LOW);
+        else if(count < 40)
+            digitalWrite(led3, LOW);
+        else if(count < 60)
+            digitalWrite(led4, LOW);
+    }
+    delay(45);
+}
