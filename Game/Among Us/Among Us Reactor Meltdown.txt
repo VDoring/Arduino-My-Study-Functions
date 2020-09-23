@@ -1,8 +1,8 @@
 //부품
-int touch_sensor_left = 2; //왼쪽 터치센서
-int touch_sensor_right = 3; //오른쪽 터치센서
-int count_down_led = 13; //빨강 LED
-int count_down_disable_check_led = 12; //초록 LED
+const int touch_sensor_left = 2; //왼쪽 터치센서
+const int touch_sensor_right = 3; //오른쪽 터치센서
+const int count_down_led = 13; //빨강 LED
+const int count_down_disable_check_led = 12; //초록 LED
 
 //게임 시스템
 #define SABOTAGE_DISABLE_TIME 10
@@ -47,12 +47,12 @@ void sabotageOn() { //사보타지 켜짐 상태
     digitalWrite(count_down_disable_check_led, LOW);
     
     while((hand_left + hand_right) != 2) { //사보타지 해제할떄까지 빨강 LED 점멸
-        handTouchCkeck();
         if(gameover % 2 == 0)
             digitalWrite(count_down_led, HIGH);
         else
             digitalWrite(count_down_led, LOW);
         delay(1000); //시간 단위 설정 (기본값 : 1초)
+        handTouchCkeck();
         sabotageTimeoutCheck();
     }
     digitalWrite(count_down_led, LOW);
@@ -69,7 +69,7 @@ void handTouchCkeck() { //(사보타지) 해제 센서 터치여부 체크
         Serial.println("오른쪽 해제 센서 인식됨");
 }
 
-void handTouchReset() {
+void handTouchReset() { //(사보타지 해제 센서 입력 값 초기화
     hand_left = 0;
     hand_right = 0;
 }
@@ -78,16 +78,16 @@ void sabotageTimeoutCheck() { //사보타지 켜진 이후 제한시간 초과�
     gameover--;
     Serial.print("원자로 멜트다운까지 : ");
     Serial.print(gameover);
-    Serial.println(" seconds.");
+    Serial.println(" 초 남음.");
 
     if(gameover <= 0) { //만약 제시간안에 사보타지 해제를 하지 못했을시
         while(1) { //무한반복
             digitalWrite(count_down_led, HIGH);
             digitalWrite(count_down_disable_check_led, HIGH); 
-            delay(250);
+            delay(275);
             digitalWrite(count_down_led, LOW);
             digitalWrite(count_down_disable_check_led, LOW);
-            delay(250);
+            delay(275);
             Serial.println("< Fatal System Error >");
         }
     }
@@ -102,5 +102,5 @@ void sabotageOff() { //사보타지 꺼짐 상태
     digitalWrite(count_down_disable_check_led, HIGH);
     Serial.print("정상 작동중. 다음 사보타지까지의 시간 : ");
     Serial.print(sabotage_disable_time);
-    Serial.println("초");
+    Serial.println("초 남음.");
 }
