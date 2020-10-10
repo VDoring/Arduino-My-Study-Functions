@@ -2,6 +2,10 @@
 //Original : https://samstory.coolschool.co.kr/zone/story/codingarray/streams/45621
 //Remake : VDoring
 
+//핀 꼽는방법)
+//아두이노 5V, GND = OLED VCC, GND 연결
+//아두이노 A4, A5 = OLED SDA, SCL 연결
+
 #include <SPI.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
