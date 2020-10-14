@@ -12,20 +12,24 @@ Adafruit_SSD1306 display(128, 32, &Wire, -1); //OLED 가로 길이, OLED 세로 
 
 SoftwareSerial mySerial(2, 3); // RX, TX
 
-char ssid[] = "SSID"; // 와이파이 SSID
-char pass[] = "PW"; // 와이파이 비밀번호
+char ssid[] = "U+Net340F"; // 와이파이 SSID
+char pass[] = "018A015635"; // 와이파이 비밀번호
 int status = WL_IDLE_STATUS; // the Wifi radio's status
 int reqCount = 0; // number of requests received
+
+float ver = 0.1;
 
 WiFiEspServer server(80);
 
 void setup()
-{
+{    
   //OLED 파트
   if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3D for 128x64
     Serial.println(F("SSD1306 Not Connected"));
     while(1) {} // SSD1306에 주소할당이 되지 않으면 무한루프
   }
+  display.clearDisplay();
+  OLEDBeforePrint(1);
 
   //ESP8266 파트
   Serial.begin(9600); // initialize serial for debugging
@@ -37,9 +41,6 @@ void setup()
     Serial.println(F("WiFi 실드 없음"));
     while (true); // don't continue
   }
-
-  display.clearDisplay();
-  OLEDBeforePrint(1);
 
   // attempt to connect to WiFi network
   while ( status != WL_CONNECTED) {
@@ -70,7 +71,7 @@ void loop()
     display.clearDisplay();
     OLEDBeforePrint(1);
     Serial.println(F("새로운 클라이언트:"));
-    OLEDAfterPrint("[New Client]");
+    OLEDAfterPrint("New Client>");
     
     // an http request ends with a blank line
     boolean currentLineIsBlank = true;
@@ -95,17 +96,20 @@ void loop()
           client.print(F("<!DOCTYPE HTML>\r\n"));
           client.print(F("<html>\r\n"));
           
-          client.print("<h1>Pocket : Mini 0</h1>\r\n"); //제목(title) 출력
-          
-          client.print("<br>\r\n");
+          client.print(F("<h1>HDR M-Server 0</h1>\r")); //제목(title) 출력
+          client.print("<h1>Welcome to HDR Server!</h1>\r\n");
           
           client.print(F("<h4>Requests received: ")); //새로고침 휫수? 값 출력
           client.print(++reqCount);
           client.print(F("</h4>\r"));
           
-          client.print("<br>\r\n");
+          client.print(F("<br>\r\n"));
           
-          client.print("</html>\r\n");
+          client.print(F("<h5>Version:")); //새로고침 휫수? 값 출력
+          client.print(ver);
+          client.print(F("</h5>\r"));
+          
+          client.print(F("</html>\r\n"));
           break;
         }
         if (c == '\n') {
@@ -123,12 +127,12 @@ void loop()
     client.stop();
     
     display.print("ReqCount:");
-    display.println(reqCount);
+    display.println(reqCount-1);
     display.display();
     
     Serial.println(F("클라이언트 연결 끊김"));
     Serial.println(F("---------------------\n\n"));
-    OLEDAfterPrint("Client Disconnected");
+    OLEDAfterPrint("Disconnected");
     OLEDAfterPrint("------------------");
   }
 }
