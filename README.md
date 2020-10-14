@@ -1,6 +1,16 @@
 # Arduino-My-Study-Functions
 ## 아두이노 문법, 기능 연습 및 개인 프로젝트
 
+## Parts used
+- ### DFPlayer(microSD used)
+- ### Display(OLED)
+- ### ESP8266(ESP-01)
+- ### Touch sensor
+- ### Light sensor(CdS)
+- ### Motion sensor(PIR)
+- ### Speaker
+- ### LED
+
 ----
 
 ## Introduce Videos
