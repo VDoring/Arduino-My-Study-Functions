@@ -12,8 +12,8 @@ Adafruit_SSD1306 display(128, 32, &Wire, -1); //OLED 가로 길이, OLED 세로 
 
 SoftwareSerial mySerial(2, 3); // RX, TX
 
-char ssid[] = "U+Net340F"; // 와이파이 SSID
-char pass[] = "018A015635"; // 와이파이 비밀번호
+char ssid[] = "SSID"; // 와이파이 SSID
+char pass[] = "PW"; // 와이파이 비밀번호
 int status = WL_IDLE_STATUS; // the Wifi radio's status
 int reqCount = 0; // number of requests received
 
