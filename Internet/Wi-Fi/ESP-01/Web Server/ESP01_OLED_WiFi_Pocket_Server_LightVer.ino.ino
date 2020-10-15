@@ -3,8 +3,8 @@
 
 SoftwareSerial mySerial(2, 3); // RX, TX
 
-const char* ssid = "U+Net340F"; //SSID
-const char* password = "018A015635"; //PW (PW가 없다면 공란으로 두기)
+const char* ssid = "SSID"; //SSID
+const char* password = "PW"; //PW (PW가 없다면 공란으로 두기)
 WiFiServer server(80);
 
 void setup() {
