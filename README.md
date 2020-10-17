@@ -1,6 +1,13 @@
 # Arduino-My-Study-Functions
 ## 아두이노 문법, 기능 연습 및 개인 프로젝트
 
+----
+
+## Arduino used
+- ### Arduino Uno
+- ### Arduino Mega
+- ### NodeMCU
+
 ## Parts used
 - ### DFPlayer(microSD used)
 - ### Display(OLED)
