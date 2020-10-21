@@ -9,8 +9,8 @@
 - ### NodeMCU
 
 ## Parts used
-- ### DFPlayer(microSD used)
-- ### Display(OLED)
+- ### DFPlayer(use microSD)
+- ### Display(OLED i2c)
 - ### ESP8266(ESP-01)
 - ### Touch sensor
 - ### Light sensor(CdS)
