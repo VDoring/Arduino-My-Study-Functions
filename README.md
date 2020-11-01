@@ -15,6 +15,7 @@
 - ### Touch sensor
 - ### Light sensor(CdS)
 - ### Motion sensor(PIR)
+- ### Ultrasonic sensor
 - ### Speaker
 - ### LED
 
