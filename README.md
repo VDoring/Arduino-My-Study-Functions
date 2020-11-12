@@ -16,6 +16,7 @@
 - ### Light sensor(CdS)
 - ### Motion sensor(PIR)
 - ### Ultrasonic sensor
+- ### Bluetooth(HC-06)
 - ### Speaker
 - ### LED
 
