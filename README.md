@@ -18,6 +18,8 @@
 - ### Ultrasonic sensor
 - ### Bluetooth(HC-06)
 - ### Speaker
+- ### Motor Driver(L298N)
+- ### Motor(DC)
 - ### LED
 
 ----
