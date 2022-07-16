@@ -12,6 +12,7 @@
 - ### DFPlayer(use microSD)
 - ### Display(OLED i2c)
 - ### ESP8266(ESP-01)
+- ### ESP32CAM(OV2640)
 - ### Touch sensor
 - ### Light sensor(CdS)
 - ### Motion sensor(PIR)
